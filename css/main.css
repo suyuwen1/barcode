@@ -612,9 +612,12 @@ transform:translateX(0)}
 .list_hide {
 	display:none;
 }
+<<<<<<< HEAD
 .error_log {
 	display:none;
 	margin-left:50px;
 	font-size:18px;
 	color:#F60;
 }
+=======
+>>>>>>> g/master

@@ -98,7 +98,11 @@ if($d1['name']=='i'){//如果是添加用户
 			}
 	}
 if($d1['name']=='s'){//如果是查询条码
+<<<<<<< HEAD
 	$sel=$M->biao('filedata')->where('danhao="'.$d['dt'].'" or adress like "%'.$d['dt'].'%" or tiaoma="'.$d['dt'].'"')->select('id,ctime,danhao,adress,tiaoma,uptime,filename');
+=======
+	$sel=$M->biao('filedata')->where('danhao="'.$d['dt'].'" or adress like "%'.$d['dt'].'%" or tiaoma="'.$d['dt'].'"')->limit(0,20)->order()->select('id,ctime,danhao,adress,tiaoma,uptime,filename');
+>>>>>>> g/master
 	if($sel){
 		$info['t']=1;
 		$info['d']='';
