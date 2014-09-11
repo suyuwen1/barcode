@@ -11,11 +11,16 @@ $d['all']=0;//总导入数
 $d['e']=0;//错误数
 $d['e_n']='';//错误行
 $d['r_n']='';//重复行
-
-$inputFileName = '../files/'.iconv("UTF-8","gb2312",$_GET['n']);
-chmod(dirname($inputFileName), 0777);//以最高操作权限操作当前目录
-$f=file_put_contents($inputFileName,file_get_contents('php://input'));
-if($f){
+$p='../files/';
+$h=opendir($p);
+while(($f=readdir($h))!==false){
+	if($f=='.'||$f=='..') continue;
+	//echo $f;
+	$inputFileName=$p.$f;
+	//echo $inputFileName;
+	$ty=pathinfo($inputFileName,PATHINFO_EXTENSION);
+	
+	if($ty=='xls'||$ty=='xlsx'){
 	$objPHPExcel = PHPExcel_IOFactory::load($inputFileName);
 	$sheetData = $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);
 	//var_dump($sheetData);
@@ -31,7 +36,7 @@ if($f){
 			$dt['adress']=$v['C'];
 			$dt['tiaoma']=$v['D'];
 			$dt['uptime']=time();
-			$dt['filename']=$_GET['n'];
+			$dt['filename']=$f;
 			$ins=$M->biao('filedata')->insert($dt);
 			if(!$ins){
 			$d['e']++;
@@ -47,14 +52,14 @@ if($f){
 	}else{
 	$d['s']=0;
 	//chmod(dirname(__FILE__), 0777); // 以最高操作权限操作当前目录
-	$file = fopen('../files/error_log.text', 'a+'); // a模式就是一种追加模式
-	$c = $_GET['n'].' 总行数：'.$d['all']."\r\n重复行：".$d['r_n']."\r\n错误行：".$d['e_n']."\r\n";
+	$file = fopen($p.'error_log.text', 'a+'); // a模式就是一种追加模式
+	$c = $f.' 总行数：'.$d['all']."\r\n重复行：".$d['r_n']."\r\n错误行：".$d['e_n']."\r\n";
 	fwrite($file, iconv("UTF-8","gb2312",$c));
 	fclose($file);
 	unset($file);
 	}
-}else{
-	$d['s']=0;
+	}
 }
+closedir($h);
 echo json_encode($d);
 ?>
