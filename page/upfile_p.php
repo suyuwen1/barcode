@@ -9,10 +9,20 @@ $d=array();
 $d['r']=0;//重复数
 $d['all']=0;//总导入数
 $d['e']=0;//错误数
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> github/master
 $d['e_n']='';//错误行
 $d['r_n']='';//重复行
 $inputFileName = '../files/'.iconv("UTF-8","gb2312",$_GET['n']);
 chmod(dirname($inputFileName), 0777);//以最高操作权限操作当前目录
+<<<<<<< HEAD
+=======
+=======
+$inputFileName = '../files/'.iconv("UTF-8","gb2312",$_GET['n']);
+>>>>>>> g/master
+>>>>>>> github/master
 $f=file_put_contents($inputFileName,file_get_contents('php://input'));
 if($f){
 	$objPHPExcel = PHPExcel_IOFactory::load($inputFileName);
@@ -20,12 +30,30 @@ if($f){
 	//var_dump($sheetData);
 	array_shift($sheetData);
 	$d['all']=count($sheetData);
+<<<<<<< HEAD
+	foreach($sheetData as $k => $v){
+=======
+<<<<<<< HEAD
 	foreach($sheetData as $k => $v){
 		$dt=array();
 		$A=explode('-',$v['A']);
 		$dt['ctime']=date("Y-m-d",mktime(0,0,0,$A[0],$A[1],$A[2]));
 		$sel=$M->biao('filedata')->where('tiaoma="'.$v['D'].'" and ctime="'.$dt['ctime'].'" and adress="'.$v['C'].'" and danhao="'.$v['B'].'"')->select('id');
 		if(!$sel){
+=======
+	foreach($sheetData as $v){
+>>>>>>> github/master
+		$dt=array();
+		$A=explode('-',$v['A']);
+		$dt['ctime']=date("Y-m-d",mktime(0,0,0,$A[0],$A[1],$A[2]));
+		$sel=$M->biao('filedata')->where('tiaoma="'.$v['D'].'" and ctime="'.$dt['ctime'].'" and adress="'.$v['C'].'" and danhao="'.$v['B'].'"')->select('id');
+		if(!$sel){
+<<<<<<< HEAD
+=======
+			$A=explode('-',$v['A']);
+			$dt['ctime']=date("Y-m-d",mktime(0,0,0,$A[0],$A[1],$A[2]));
+>>>>>>> g/master
+>>>>>>> github/master
 			$dt['danhao']=$v['B'];
 			$dt['adress']=$v['C'];
 			$dt['tiaoma']=$v['D'];
@@ -34,6 +62,10 @@ if($f){
 			$ins=$M->biao('filedata')->insert($dt);
 			if(!$ins){
 			$d['e']++;
+<<<<<<< HEAD
+			$d['e_n'].=$k.',';
+=======
+<<<<<<< HEAD
 			$d['e_n'].=$k.',';
 			}
 		}else{
@@ -51,6 +83,28 @@ if($f){
 	fwrite($file, iconv("UTF-8","gb2312",$c));
 	fclose($file);
 	unset($file);
+=======
+>>>>>>> github/master
+			}
+		}else{
+		$d['r']++;
+		$d['r_n'].=$k.',';
+		}
+	}
+	if($d['e']==0 && $d['r']==0){
+	$d['s']=1;
+	}else{
+	$d['s']=0;
+<<<<<<< HEAD
+	//chmod(dirname(__FILE__), 0777); // 以最高操作权限操作当前目录
+	$file = fopen('../files/error_log.text', 'a+'); // a模式就是一种追加模式
+	$c = $_GET['n'].' 总行数：'.$d['all']."\r\n重复行：".$d['r_n']."\r\n错误行：".$d['e_n']."\r\n";
+	fwrite($file, iconv("UTF-8","gb2312",$c));
+	fclose($file);
+	unset($file);
+=======
+>>>>>>> g/master
+>>>>>>> github/master
 	}
 }else{
 	$d['s']=0;

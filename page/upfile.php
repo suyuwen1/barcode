@@ -7,7 +7,15 @@ include_once("head.php");
 <div><!--<form name="file_form" id="file_form" method="post" enctype="multipart/form-data"
  action="">-->
  <p><input type="file" name="file[]" id="file_upload" multiple></p>
+<<<<<<< HEAD
  <p><input id="up_button" type="submit" value="上传"><span class="error_log"><a target="_blank" href="../files/error_log.text">上传日志</a></span></p>
+=======
+<<<<<<< HEAD
+ <p><input id="up_button" type="submit" value="上传"><span class="error_log"><a target="_blank" href="../files/error_log.text">上传日志</a></span></p>
+=======
+ <p><input id="up_button" type="submit" value="上传"></p>
+>>>>>>> g/master
+>>>>>>> github/master
 <!-- </form>--></div>
 <div id="file_con"></div>
 </div>
@@ -76,15 +84,31 @@ var SYW = {
 			if(i==(this.fileFilter.length-1)){
 				this.onComplete();
 				//setTimeout(function(){$("#file_con").html('')},2000);
+<<<<<<< HEAD
 				$(".error_log").show();//显示上传日志
+=======
+<<<<<<< HEAD
+				$(".error_log").show();//显示上传日志
+=======
+>>>>>>> g/master
+>>>>>>> github/master
 				return false;
 				}
 			} 
 	},
 	fileSelect : function(e){//选择文件将文件加入数组
 		if(!this.fileFilter.length){
+<<<<<<< HEAD
 			$("#file_con").html('');//清空上传文件显示区
 			$(".error_log").hide();//隐藏上传日志
+=======
+<<<<<<< HEAD
+			$("#file_con").html('');//清空上传文件显示区
+			$(".error_log").hide();//隐藏上传日志
+=======
+			$("#file_con").html('');
+>>>>>>> g/master
+>>>>>>> github/master
 		}
 		var f_h='';
 		e = e || window.event;
