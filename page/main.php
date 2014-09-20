@@ -98,26 +98,14 @@ if($d1['name']=='i'){//如果是添加用户
 			}
 	}
 if($d1['name']=='s'){//如果是查询条码
-<<<<<<< HEAD
 	//$d['dt']=trim($d['dt']);
 	/* $sel=$M->biao('filedata')->where('danhao="'.$d['dt'].'" or adress like "%'.$d['dt'].'%" or tiaoma="'.$d['dt'].'"')->limit(0,20)->order()->select('id,ctime,danhao,adress,tiaoma,uptime,filename'); */
 	$sel=$M->biao('filedata')->where('tiaoma="'.$d['dt'].'"')->limit(0,20)->select('id,ctime,danhao,adress,tiaoma,uptime,filename');
-=======
-<<<<<<< HEAD
-	$sel=$M->biao('filedata')->where('danhao="'.$d['dt'].'" or adress like "%'.$d['dt'].'%" or tiaoma="'.$d['dt'].'"')->select('id,ctime,danhao,adress,tiaoma,uptime,filename');
-=======
-	$sel=$M->biao('filedata')->where('danhao="'.$d['dt'].'" or adress like "%'.$d['dt'].'%" or tiaoma="'.$d['dt'].'"')->limit(0,20)->order()->select('id,ctime,danhao,adress,tiaoma,uptime,filename');
->>>>>>> g/master
->>>>>>> github/master
 	if($sel){
 		$info['t']=1;
 		$info['d']='';
 		foreach($sel as $v){
-<<<<<<< HEAD
 			$info['d'].='<div class="sel_list"><div title="出货公司" class="sel_list_t">'.$v['adress'].'</div><div class="sel_list_c"><p title="产品条码">'.$v['tiaoma'].'<span class="sel_list_info">产品条码</span></p><p title="出库单号">'.$v['danhao'].'<span class="sel_list_info">出库单号</span></p><p title="订单日期">'.$v['ctime'].'<span class="sel_list_info">订单日期</span></p><p title="上传日期">'.date('Y-m-d',$v['uptime']).'<span class="sel_list_info">上传日期</span></p><p title="原文件下载"><a href="'.$v['filename'].'">原文件下载</a></p></div></div>';
-=======
-			$info['d'].='<div class="sel_list"><div title="出货公司" class="sel_list_t">'.$v['adress'].'</div><div class="sel_list_c"><p title="产品条码">'.$v['tiaoma'].'<span class="sel_list_info">产品条码</span></p><p title="出库单号">'.$v['danhao'].'<span class="sel_list_info">出库单号</span></p><p title="订单日期">'.$v['ctime'].'<span class="sel_list_info">订单日期</span></p><p title="上传日期">'.date('Y-m-d',$v['uptime']).'<span class="sel_list_info">上传日期</span></p><p title="原文件下载"><a href="../files/'.$v['filename'].'">原文件下载</a></p></div></div>';
->>>>>>> github/master
 			}
 	}else{
 		$info['t']=0;

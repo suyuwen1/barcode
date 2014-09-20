@@ -7,15 +7,7 @@ include_once("head.php");
 <div><!--<form name="file_form" id="file_form" method="post" enctype="multipart/form-data"
  action="">-->
  <p><input type="file" name="file[]" id="file_upload" multiple></p>
-<<<<<<< HEAD
  <p><input id="up_button" type="submit" value="上传"><span class="error_log"><a target="_blank" href="../files/error_log.text">上传日志</a></span></p>
-=======
-<<<<<<< HEAD
- <p><input id="up_button" type="submit" value="上传"><span class="error_log"><a target="_blank" href="../files/error_log.text">上传日志</a></span></p>
-=======
- <p><input id="up_button" type="submit" value="上传"></p>
->>>>>>> g/master
->>>>>>> github/master
 <!-- </form>--></div>
 <div id="file_con"></div>
 </div>
@@ -75,10 +67,7 @@ var SYW = {
 						}else{
 							self.onFailure(i);
 							}
-<<<<<<< HEAD
 					$(".error_log a").attr("href",d.url+"error_log.text");
-=======
->>>>>>> github/master
 				},
 				error: function(){
 					$(".d"+i+" .gtiao").css({"width":"100%","background-color":"#F60"});
@@ -88,31 +77,15 @@ var SYW = {
 			if(i==(this.fileFilter.length-1)){
 				this.onComplete();
 				//setTimeout(function(){$("#file_con").html('')},2000);
-<<<<<<< HEAD
 				$(".error_log").show();//显示上传日志
-=======
-<<<<<<< HEAD
-				$(".error_log").show();//显示上传日志
-=======
->>>>>>> g/master
->>>>>>> github/master
 				return false;
 				}
 			} 
 	},
 	fileSelect : function(e){//选择文件将文件加入数组
 		if(!this.fileFilter.length){
-<<<<<<< HEAD
 			$("#file_con").html('');//清空上传文件显示区
 			$(".error_log").hide();//隐藏上传日志
-=======
-<<<<<<< HEAD
-			$("#file_con").html('');//清空上传文件显示区
-			$(".error_log").hide();//隐藏上传日志
-=======
-			$("#file_con").html('');
->>>>>>> g/master
->>>>>>> github/master
 		}
 		var f_h='';
 		e = e || window.event;
@@ -121,13 +94,8 @@ var SYW = {
 				alert('你已选择"'+file.name+'"文件！');
 				}else{
 			if(file.type.indexOf("application/vnd.ms-excel")==0||file.type.indexOf("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")==0){
-<<<<<<< HEAD
 				if(file.size>=5242880){
 					alert('你的这个文件"'+file.name+'"过大，应小于5M！');
-=======
-				if(file.size>=2097152){
-					alert('你的这个文件"'+file.name+'"过大，应小于2M！');
->>>>>>> github/master
 					}else{
 						this.fileFilter.push(file);
 						}

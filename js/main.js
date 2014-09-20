@@ -73,15 +73,11 @@ function sel_button_click(){
 			if(t=='i'){
 				if(email_check(text)){
 					i_ajax('post','main.php','json',{"name":"i","user":text},up_sel,con_data);
-<<<<<<< HEAD
 					return false;
-=======
->>>>>>> github/master
 					}else{
 						alert('请输入Email');
 						}
 				}
-<<<<<<< HEAD
 			if(t=="s"){
 				i_ajax('post','main.php','json',{"name":"s","dt":text},up_sel,con_data);
 				return false;
@@ -97,40 +93,17 @@ function sel_button_click(){
 function up_sel(){
 	$("#con").show().html('数据加载中...');
 	$("#sel").animate({"margin-top":"10px"},"fast");
-=======
-			if(t=='s'){
-				i_ajax('post','main.php','json',{"name":"s","dt":text},up_sel,con_data);
-				}
-			if(t=='p'){
-				i_ajax('post','main.php','json',{"name":"p","dt":text},up_sel,con_data);
-			}
-			}
-    });
-	}
-function up_sel(){
-	$("#sel").animate({"margin-top":"10px"},"fast",function(){
-		$("#con").show();
-		});
->>>>>>> github/master
 	}
 function down_sel(){
 	$("#sel").animate({"margin-top":"230px"},"fast",function(){
 		$("#con").hide();
 		});
 	}
-<<<<<<< HEAD
 function con_data(da){
 	if(da.t){
 		$("#con").html(da.d);
 		}else{
 			$("#con").html(da.n);
-=======
-function con_data(data){
-	if(data.t){
-		$("#con").html(data.d);
-		}else{
-			$("#con").html(data.n);
->>>>>>> github/master
 			}
 	}
 function input_enter(){
