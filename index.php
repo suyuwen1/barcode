@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 session_start();
 if(!empty($_SESSION['user'])){
@@ -5,6 +6,8 @@ header("Location:page/sel.php");
 exit;
 }
 ?>
+=======
+>>>>>>> github/master
 <!doctype html>
 <html>
 <head>
