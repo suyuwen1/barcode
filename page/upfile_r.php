@@ -7,7 +7,7 @@
 <body>
 <?php
 set_time_limit(0);
-ini_set("memory_limit","-1");
+ini_set("memory_limit",-1);
 date_default_timezone_set('PRC');
 include '../phpexcel/Classes/PHPExcel/IOFactory.php';
 include '../class/Mydb_class.php';
@@ -15,7 +15,7 @@ include '../class/Allfunction_class.php';
 $M=new Allfunction();
 $d=array();
 
-$p='../files/2013/13/';
+$p='../files/2013/5/';
 $h=opendir($p);
 
 while(($f=readdir($h))!==false){
@@ -49,7 +49,7 @@ while(($f=readdir($h))!==false){
 		$dt['danhao']=$worksheet->getCell('B'.$i)->getFormattedValue();
 		$dt['adress']=$worksheet->getCell('C'.$i)->getFormattedValue();
 		$dt['tiaoma']=$worksheet->getCell('D'.$i)->getFormattedValue();
-		if($dt['ctime']!='' && $dt['danhao']!='' && $dt['adress']!='' && $dt['tiaoma']!=''){
+		if($dt['ctime']!='' && $dt['danhao']!='' && $dt['tiaoma']!=''){
 			$sel=$M->biao('filedata')->where('tiaoma="'.$dt['tiaoma'].'" and ctime="'.$dt['ctime'].'" and adress="'.$dt['adress'].'" and danhao="'.$dt['danhao'].'"')->limit(0,1)->select('id');
 			if(!$sel){
 				$ins=$M->biao('filedata')->insert($dt);

@@ -23,7 +23,7 @@ $p.=date("n").'/';
 if(!is_dir($p)){
 mkdir($p);
 }
-$d['url']=$p.'log_'.$_GET['t'].'.text';
+$d['url']=$p.'log_'.$_GET['tm'].'.text';
 $inputFileName = $p.iconv("UTF-8","gb2312",$_GET['n']);
 chmod(dirname($inputFileName), 0777);//以最高操作权限操作当前目录
 $f=file_put_contents($inputFileName,file_get_contents('php://input'));
@@ -61,14 +61,14 @@ if($f){
 	}
 	//chmod(dirname(__FILE__), 0777); // 以最高操作权限操作当前目录
 	$file = fopen($d['url'], 'a+'); // a模式就是一种追加模式
-	if($d['e']==0 && $d['r']==0 && $d['q']==0){
+	if($d['e']==0 && $d['r']==0 && $d['q']==0 && ($AllRow-1)!=0){
 		$d['s']=1;
 		$c = $_GET['n'].' 总行数：'.($AllRow-1)." 导入成功！\r\n------------------------------------------------------------------\r\n";
 	}else{
 		$d['s']=0;
 		$c = $_GET['n'].' 总行数：'.($AllRow-1);
 		if($d['r']){
-		$c.="\r\n重复数：".$d['r'];
+		$c.="\r\n重复行：".$d['r_n'];
 		}
 		if($d['e']){
 		$c.="\r\n错误行：".$d['e_n'];
@@ -85,4 +85,5 @@ if($f){
 	$d['s']=0;
 }
 echo json_encode($d);
+exit;
 ?>

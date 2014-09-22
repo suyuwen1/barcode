@@ -50,10 +50,11 @@ var SYW = {
 		
 		for(var i = 0,file; file = this.fileFilter[i]; i++){
 			if(file.name != 'del'){
+				var dd=new Date();
 				$.ajax({
 				type:"POST",
-				async:false,
-				url:"upfile_p.php?n="+file.name,
+				global:false,
+				url:"upfile_p.php?n="+file.name+"&tm="+dd.getTime(),
 				dataType:"json",
 				data:file,
 				contentType:"multipart/form-data",
@@ -67,10 +68,13 @@ var SYW = {
 						}else{
 							self.onFailure(i);
 							}
-					$(".error_log a").attr("href",d.url+"error_log.text");
+					$(".error_log a").attr("href",d.url);
 				},
-				error: function(){
+				error: function(XMLHttpRequest, textStatus, errorThrown){
 					$(".d"+i+" .gtiao").css({"width":"100%","background-color":"#F60"});
+					alert(XMLHttpRequest.responseText);
+                    alert(XMLHttpRequest.readyState);
+                    alert(textStatus);
 					}
 				});
 				}
