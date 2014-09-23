@@ -53,6 +53,10 @@ var SYW = {
 				var dd=new Date();
 				$.ajax({
 				type:"POST",
+<<<<<<< HEAD
+=======
+				global:false,
+>>>>>>> github/master
 				url:"upfile_p.php?n="+file.name+"&tm="+dd.getTime(),
 				dataType:"json",
 				data:file,
@@ -69,8 +73,11 @@ var SYW = {
 							}
 					$(".error_log a").attr("href",d.url);
 				},
-				error: function(){
+				error: function(XMLHttpRequest, textStatus, errorThrown){
 					$(".d"+i+" .gtiao").css({"width":"100%","background-color":"#F60"});
+					alert(XMLHttpRequest.responseText);
+                    alert(XMLHttpRequest.readyState);
+                    alert(textStatus);
 					}
 				});
 				}
