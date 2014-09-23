@@ -73,34 +73,37 @@ function sel_button_click(){
 			if(t=='i'){
 				if(email_check(text)){
 					i_ajax('post','main.php','json',{"name":"i","user":text},up_sel,con_data);
+					return false;
 					}else{
 						alert('请输入Email');
 						}
 				}
-			if(t=='s'){
+			if(t=="s"){
 				i_ajax('post','main.php','json',{"name":"s","dt":text},up_sel,con_data);
+				return false;
 				}
-			if(t=='p'){
+			if(t=="p"){
 				i_ajax('post','main.php','json',{"name":"p","dt":text},up_sel,con_data);
+				return false;
 			}
 			}
+		return false;
     });
 	}
 function up_sel(){
-	$("#sel").animate({"margin-top":"10px"},"fast",function(){
-		$("#con").show();
-		});
+	$("#con").show().html('数据加载中...');
+	$("#sel").animate({"margin-top":"10px"},"fast");
 	}
 function down_sel(){
 	$("#sel").animate({"margin-top":"230px"},"fast",function(){
 		$("#con").hide();
 		});
 	}
-function con_data(data){
-	if(data.t){
-		$("#con").html(data.d);
+function con_data(da){
+	if(da.t){
+		$("#con").html(da.d);
 		}else{
-			$("#con").html(data.n);
+			$("#con").html(da.n);
 			}
 	}
 function input_enter(){

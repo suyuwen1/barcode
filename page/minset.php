@@ -54,7 +54,7 @@ if($d1['name']=='uk'){
 	}
 }
 if($d1['name']=='rpw'){
-	$gl_set=$M->biao('login')->where('id="'.$d['id'].'"')->update(array('u_k'=>md5('aigo123456')));
+	$gl_set=$M->biao('login')->where('id="'.$d['id'].'"')->update(array('pw'=>md5('aigo123456')));
 	if($gl_set){
 		$info['t']=0;
 		$info['n']='新密码为 123456';
