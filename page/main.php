@@ -7,7 +7,7 @@ $M=new Allfunction();
 date_default_timezone_set('PRC');
 $d=$d1=$_POST;
 $info=array();
-session_set_cookie_params(604800);
+
 session_start();
 if($d1['name']=='l'){//如果用户登陆
 $sel=$M->biao('login')->where('user="'.$d['e'].'"')->limit(0,1)->select('id,pw,gl,u_k');

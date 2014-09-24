@@ -1,4 +1,5 @@
 <?php
+session_set_cookie_params(604800);
 session_start();
 if(!empty($_SESSION['user'])){
 header("Location:page/sel.php");
