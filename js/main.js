@@ -153,7 +153,8 @@ function user_gl_change(data){
 			$("#con").html('已删除！');
 			setTimeout("down_sel()",300);
 			}else{
-				$(".con_gl").replaceWith(data.d);
+				$(".con_gl").replaceWith(data.d1);
+				$(".con_gl2").replaceWith(data.d2);
 				}
 		}else{
 			alert(data.n);

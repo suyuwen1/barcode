@@ -77,16 +77,37 @@ if($d1['name']=='i'){//如果是添加用户
 		$sel=$M->biao('login')->where('user="'.$d['user'].'"')->limit(0,1)->select('id,gl');
 		if($sel){
 			$info['t']=0;
-			$gl=$sel[0]['gl']?'end':'set';
-			$gl2=$sel[0]['gl']?'取消管理员权限':'设置为管理员';
-			$info['n']='<p class="info_p">此用户已存在！</p><a href="javascript:user_gl(\''.$gl.'\','.$sel[0]['id'].')" class="con_gl">'.$gl2.'</a><br><a href="javascript:user_gl(\'uk\','.$sel[0]['id'].')">解除锁定</a><br><a href="javascript:user_gl(\'rpw\','.$sel[0]['id'].')">重置密码</a><br><a href="javascript:user_gl(\'del\','.$sel[0]['id'].')" class="del_user">删除用户</a>';
+			//$gl=$sel[0]['gl']?'end':'set';
+			//$gl2=$sel[0]['gl']?'取消管理员权限':'设置为管理员';
+			switch($sel[0]['gl']){
+				case '1':
+					$gl3='set1';
+					$gl4='设置为数据员';
+					$gl='end';
+					$gl2='取消管理员权限';
+					break;
+				case '2':
+					$gl='set';
+					$gl2='设置为管理员';
+					$gl3='end';
+					$gl4='取消数据员权限';
+					break;					
+				default:
+					$gl='set';
+					$gl2='设置为管理员';
+					$gl3='set1';
+					$gl4='设置为数据员';
+			}
+			//echo $gl;
+			//var_dump($sel[0]['gl']);
+			$info['n']='<p class="info_p">此用户已存在！</p><a href="javascript:user_gl(\''.$gl.'\','.$sel[0]['id'].')" class="con_gl">'.$gl2.'</a><br><a href="javascript:user_gl(\''.$gl3.'\','.$sel[0]['id'].')" class="con_gl2">'.$gl4.'</a><br><a href="javascript:user_gl(\'uk\','.$sel[0]['id'].')">解除锁定</a><br><a href="javascript:user_gl(\'rpw\','.$sel[0]['id'].')">重置密码</a><br><a href="javascript:user_gl(\'del\','.$sel[0]['id'].')" class="del_user">删除用户</a>';
 			}else{
 				unset($d['name']);
 				$d['pw']=md5('aigo123456');
 				$into=$M->biao('login')->insert($d);
 				if($into){
 					$info['t']=1;
-					$info['d']='<p class="info_p">已添加，用户 '.$d['user'].' 的密码为 123456<br>请登陆后即时更改密码！</p><a href="javascript:user_gl(\'set\','.$into[0].')" class="con_gl">设置为管理员</a><br><a href="javascript:user_gl(\'del\','.$into[0].')" class="del_user">删除用户</a>';
+					$info['d']='<p class="info_p">已添加，用户 '.$d['user'].' 的密码为 123456<br>请登陆后即时更改密码！</p><a href="javascript:user_gl(\'set\','.$into[0].')" class="con_gl">设置为管理员</a><br><a href="javascript:user_gl(\'set1\','.$into[0].')" class="con_gl2">设置为数据员</a><br><a href="javascript:user_gl(\'del\','.$into[0].')" class="del_user">删除用户</a>';
 					}else{
 						$info['t']=0;
 						$info['n']='添加失败，请稍后再试！';

@@ -7,14 +7,44 @@ $M=new Allfunction();
 date_default_timezone_set('PRC');
 $d=$d1=$_POST;
 $info=array();
-if($d1['name']=='set'||$d1['name']=='end'){//如果是设置为管理员或取消
-	$gl=$d1['name']=='set'?1:0;
+if($d1['name']=='set'||$d1['name']=='end'||$d1['name']=='set1'){//如果是设置为管理员、数据员或取消
+	//$gl=$d1['name']=='set'?1:0;
+	switch($d1['name']){
+		case 'set':
+			$gl=1;
+			break;
+		case 'set1':
+			$gl=2;
+			break;
+		default:
+			$gl=0;
+	}
 	$gl_set=$M->biao('login')->where('id="'.$d['id'].'"')->update(array('gl'=>$gl));
 	if($gl_set){
 		$info['t']=1;
-		$gl=$d1['name']=='set'?'end':'set';
-		$gl_set=$d1['name']=='set'?'取消管理员权限':'设置为管理员';
-		$info['d']='<a href="javascript:user_gl(\''.$gl.'\','.$d['id'].')" class="con_gl">'.$gl_set.'</a>';
+		//$gl=$d1['name']=='set'?'end':'set';
+		//$gl_set=$d1['name']=='set'?'取消管理员权限':'设置为管理员';
+		switch($d1['name']){
+				case 'set':
+					$gl3='set1';
+					$gl_set4='设置为数据员';
+					$gl='end';
+					$gl_set='取消管理员权限';
+					break;
+				case 'set1':
+					$gl='set';
+					$gl_set='设置为管理员';
+					$gl3='end';
+					$gl_set4='取消数据员权限';
+					break;
+				default:
+					$gl='set';
+					$gl_set='设置为管理员';
+					$gl3='set1';
+					$gl_set4='设置为数据员';
+			}
+		$info['d1']='<a href="javascript:user_gl(\''.$gl.'\','.$d['id'].')" class="con_gl">'.$gl_set.'</a>';
+		$info['d2']='<a href="javascript:user_gl(\''.$gl3.'\','.$d['id'].')" class="con_gl2">'.$gl_set4.'</a>';
 		$info['bfd']=$d;
 		}else{
 			$info['t']=0;
