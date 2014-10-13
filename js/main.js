@@ -139,7 +139,7 @@ function login_button_click(){
 	}
 function login_su(data){
 	if(data.t){
-		window.location="page/sel.php";
+		window.location="index.php";
 		}else{
 			$(".error_info").html(data.n);
 			}
