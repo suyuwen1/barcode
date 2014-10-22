@@ -73,7 +73,7 @@ function login_error_check($u){
 			} */
 }
 if($d1['name']=='i'){//如果是添加用户
-	if(preg_match("/^[\w\-\.]+@[\w]+(\.\w+)+$/",$d['user'])){
+	if(preg_match("/^[\w\-\.]+@[\w\-]+(\.\w+)+$/",$d['user'])){
 		$sel=$M->biao('login')->where('user="'.$d['user'].'"')->limit(0,1)->select('id,gl');
 		if($sel){
 			$info['t']=0;

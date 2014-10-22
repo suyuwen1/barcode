@@ -33,7 +33,7 @@ function i_ajax(t,u,dt,d,bf,su){
 		});
 	}
 function email_check(m){
-	var search_str = /^[\w\-\.]+@[\w]+(\.\w+)+$/;
+	var search_str = /^[\w\-\.]+@[\w\-]+(\.\w+)+$/;
 	if(search_str.test(m)){
 		m=true;
 		}else{
