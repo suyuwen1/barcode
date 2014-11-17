@@ -8,6 +8,7 @@ exit;
 <!doctype html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="renderer" content="webkit" />
 <title>爱国者产品管理-<?php echo $title;?></title>
 <link href="../css/main.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="../js/jquery-2.1.1.min.js"></script>

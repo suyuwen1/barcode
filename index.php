@@ -10,7 +10,8 @@ exit;
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
+<meta charset="utf-8" />
+<meta name="renderer" content="webkit" />
 <title>爱国者产品管理系统-登陆</title>
 <link type="text/css" rel="stylesheet" href="css/main.css">
 <style type="text/css">

@@ -308,7 +308,7 @@ button:focus,input:focus, select:focus, textarea:focus{
 	background-color: transparent;
 }
 #bar {
-	padding-top: 80px;
+	padding-top: 60px;
 }
 
 .bar_list a {
