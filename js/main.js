@@ -168,3 +168,11 @@ function su_t(data){
 		window.location="../index.php";
 		}
 }
+function zjd(){
+	i_ajax('post','zj.php','json',{"name":"zj"},'',zj_t);
+}
+function zj_t(data){
+	if (data.t) {
+		$("#zj_c").html(data.n);
+	};
+}

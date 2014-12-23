@@ -23,7 +23,7 @@ $p.=date("n").'/';
 if(!is_dir($p)){
 mkdir($p);
 }
-$d['url']=$p.'log_'.$_GET['tm'].'.text';
+$d['url']=$p.date('Y-n-d').'.text';
 $inputFileName = $p.iconv("UTF-8","gb2312",$_GET['n']);
 chmod(dirname($inputFileName), 0777);//以最高操作权限操作当前目录
 $f=file_put_contents($inputFileName,file_get_contents('php://input'));
@@ -60,7 +60,7 @@ if($f){
 		}
 	}
 	//chmod(dirname(__FILE__), 0777); // 以最高操作权限操作当前目录
-	$file = fopen($d['url'], 'a+'); // a模式就是一种追加模式
+	$file = fopen($d['url'], 'a+'); // 读写方式打开，将文件指针指向文件末尾。如果文件不存在则尝试创建之。
 	if($d['e']==0 && $d['r']==0 && $d['q']==0 && ($AllRow-1)!=0){
 		$d['s']=1;
 		$c = $_GET['n'].' 总行数：'.($AllRow-1)." 导入成功！\r\n--------------------------------------------------------------------------------\r\n";

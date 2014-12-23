@@ -10,6 +10,10 @@ include_once("head.php");
  <p><input id="up_button" type="submit" value="上传"><span class="error_log"><a target="_blank" href="../files/error_log.text">上传日志</a></span></p>
 <!-- </form>--></div>
 <div id="file_con"></div>
+<div id="zj" style="padding-top:40px;font-size:24px">
+	<div>最近上传</div>
+	<div id="zj_c" style="padding-top:20px"><script type="text/javascript"> zjd(); </script></div>
+</div>
 </div>
 <script type="text/javascript">
 var SYW = {

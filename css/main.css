@@ -632,3 +632,11 @@ transform:translateX(0)}
 	font-size:18px;
 	color:#F60;
 }
+.logtextlist {
+	width: 280px;
+	float: left;
+	display: block;
+	font-size: 20px;
+	overflow: hidden;
+	padding:5px 0px 5px 0px;
+}

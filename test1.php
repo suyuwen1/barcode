@@ -6,16 +6,11 @@
 </head>
 
 <body>
-<?php
-$p='files/'.date("Y").'/';
-if(!is_dir($p)){
-mkdir($p);
-}
-$p.=date("n").'/';
-if(!is_dir($p)){
-mkdir($p);
-}
-echo $p;
+<?php 
+	echo basename(basename('123.xlsx','.xlsx'),'.xls');
+	echo date('Y-n-d',strtotime("-1 month"));
+	echo $a=pathinfo('123.php');
+	echo $a['extension'];
 ?>
 </body>
 </html>
